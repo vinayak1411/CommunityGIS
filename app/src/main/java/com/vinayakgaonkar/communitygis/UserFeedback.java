@@ -82,35 +82,37 @@ public class UserFeedback extends AppCompatActivity
                         try {
                             //converting the string to json array object
                             JSONArray array = new JSONArray(response);
-
                             //traversing through all the object
+                           if(array.length()!=0) {
+                                for (int i = 0; i < array.length(); i++) {
+                                    try {
+                                        //getting product object from json array
 
-                            for (int i = 0; i < array.length(); i++) {
-                                try{
-                                //getting product object from json array
+                                        JSONObject feedbackObject = array.getJSONObject(i);
+                                        int id = feedbackObject.getInt("id");
+                                        String address = feedbackObject.getString("address");
+                                        String amenity_type = feedbackObject.getString("amenity_type");
+                                        String amenity_category = feedbackObject.getString("amenity_category");
+                                        String amenity_comment = feedbackObject.getString("amenity_comment");
+                                        String ratings = feedbackObject.getString("ratings");
+                                        String image_url = feedbackObject.getString("image_url");
+                                        Feedback feedback = new Feedback(id, address, amenity_type, amenity_category, amenity_comment, image_url, ratings);
 
-                                JSONObject feedbackObject = array.getJSONObject(i);
-                                int id = feedbackObject.getInt("id");
-                                String address = feedbackObject.getString("address");
-                                String amenity_type = feedbackObject.getString("amenity_type");
-                                String amenity_category = feedbackObject.getString("amenity_category");
-                                String amenity_comment = feedbackObject.getString("amenity_comment");
-                                String ratings = feedbackObject.getString("ratings");
-                                String image_url = feedbackObject.getString("image_url");
-                                Feedback feedback = new Feedback(id, address, amenity_type,amenity_category, amenity_comment, image_url, ratings);
-
-                                feedbackList.add(feedback);
+                                        feedbackList.add(feedback);
 
 
-                                     adapter = new FeedbackAdapter(UserFeedback.this, feedbackList);
-                                    recyclerView.setAdapter(adapter);
-                                }catch(Exception e){
-                                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                                        adapter = new FeedbackAdapter(UserFeedback.this, feedbackList);
+                                        recyclerView.setAdapter(adapter);
+                                    } catch (Exception e) {
+                                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                                    }
                                 }
+
+
                             }
-
-
-
+                            else{
+                                Toast.makeText(UserFeedback.this,"You Have Not Submitted Any Feedback Yet ",Toast.LENGTH_LONG).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
