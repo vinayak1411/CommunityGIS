@@ -23,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -42,6 +43,7 @@ public class Profile extends AppCompatActivity
     RadioGroup radioGroup;
     RadioButton  gender ;
     Button Save;
+    ImageView displaypic;
     private String Gender_str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +54,17 @@ public class Profile extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         progressDialog = new ProgressDialog(Profile.this);
-
+        displaypic = (ImageView)findViewById(R.id.Profile_pic);
         etname =(EditText)findViewById(R.id.Name);
         etphno = (EditText)findViewById(R.id.Contact);
         etaadhar = (EditText)findViewById(R.id.AdharNo);
+        String aadharnum = etaadhar.getText().toString();
+        Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
         etemail = (EditText)findViewById(R.id.Email);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
-
+        Glide.with(Profile.this)
+                .load(user.getPhotoUrl())
+                .into(displaypic);
         etname.setText(user.getDisplayName());
         etemail.setText(user.getEmail());
         Save = (Button)findViewById(R.id.Save_btn);
