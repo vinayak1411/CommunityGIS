@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@mipmap/ic_feedback_black_24dp"
+            android:title=" Give FeedBack" />
+        <item
+            android:id="@+id/nav_use"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="How To Use" />
+        <item
+            android:id="@+id/nav_userfeedback"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Your Feedback" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@mipmap/ic_person_black_24dp"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@mipmap/ic_exit_to_app_black_24dp"
+            android:title="LogOut" />
+    </group>
+
+
+
+</menu>

@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">CommunityGIS</string>
+    <string name="title_activity_webview">WebviewActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_userform">Userform</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_howtouse">Howtouse</string>
+
+    <string-array name="amenity_type">
+        <item>Road</item>
+        <item>School</item>
+        <item>Hospital</item>
+
+    </string-array>
+
+    <string-array name="Category_Road">
+        <item>Traffic Congestion</item>
+        <item>Water Logging</item>
+        <item>Garbage</item>
+        <item>Potholes</item>
+    </string-array>
+
+    <string-array name="Category_School">
+        <item>Improper Sanitation</item>
+        <item>Sound Pollution</item>
+        <item>Water Logging</item>
+        <item>Improper Teaching Aids</item>
+        <item>Garbage</item>
+    </string-array>
+
+    <string-array name="Category_Hospital">
+        <item>Improper Sanitation</item>
+        <item>Few Medical Facilites</item>
+        <item>No Medical Nearby</item>
+        <item>No Ambulance</item>
+    </string-array>
+    <string name="title_activity_user_feedback">UserFeedback</string>
+</resources>

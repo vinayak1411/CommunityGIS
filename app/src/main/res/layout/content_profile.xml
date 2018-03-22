@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.vinayakgaonkar.communitygis.Profile"
+    tools:showIn="@layout/app_bar_profile">
+
+
+    <Button
+        android:id="@+id/Save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:text="Save" />
+
+    <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView_gender"
+        android:layout_alignStart="@+id/Email"
+        android:ems="10"
+        android:hint="Enter Your Full Name"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView_name"
+        android:layout_below="@+id/textView_name"
+        android:layout_marginTop="40dp"
+        android:text="Gender" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView_gender"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:id="@+id/Radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/Radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Female" />
+
+        <RadioButton
+            android:id="@+id/Radio_Trans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Transgender" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView_gender"
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginTop="38dp"
+        android:text="Email" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView_email"
+        android:layout_alignStart="@+id/AdharNo"
+        android:ems="10"
+        android:hint="Enter Your Email"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView_adhar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView_email"
+        android:layout_below="@+id/textView_email"
+        android:layout_marginTop="57dp"
+        android:text="Adhar Number" />
+
+    <EditText
+        android:id="@+id/AdharNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_adhar"
+        android:layout_alignBottom="@+id/textView_adhar"
+        android:layout_alignStart="@+id/Save_btn"
+        android:ems="10"
+        android:hint="Enter Your Adhar Number"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Save_btn"
+        android:layout_alignStart="@+id/textView_adhar"
+        android:layout_marginBottom="25dp"
+        android:text="Contact Number" />
+
+    <EditText
+        android:id="@+id/Contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_contact"
+        android:layout_alignBottom="@+id/textView_contact"
+        android:layout_alignStart="@+id/Save_btn"
+        android:ems="10"
+        android:hint="Enter Your Contact Number"
+        android:inputType="textPersonName" />
+
+</RelativeLayout>

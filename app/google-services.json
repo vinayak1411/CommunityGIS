@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1009779188069",
+    "firebase_url": "https://communitygis-final.firebaseio.com",
+    "project_id": "communitygis-final",
+    "storage_bucket": "communitygis-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009779188069:android:c836644444fb0de5",
+        "android_client_info": {
+          "package_name": "com.vinayakgaonkar.communitygis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009779188069-3iacu5v0duaooi1tmtru420k7g0dhmua.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vinayakgaonkar.communitygis",
+            "certificate_hash": "fca4c98f2c4a53ee6ef250c1d0d2642432c1d5b8"
+          }
+        },
+        {
+          "client_id": "1009779188069-056nfejqs12aegme5ot55p8anuabc2re.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7PlyBbI0YYyJw9Vnpk64hi5ITqby3k-0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009779188069-056nfejqs12aegme5ot55p8anuabc2re.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
