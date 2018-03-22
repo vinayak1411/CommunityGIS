@@ -60,8 +60,10 @@ public class Profile extends AppCompatActivity
         etphno = (EditText)findViewById(R.id.Contact);
         etaadhar = (EditText)findViewById(R.id.AdharNo);
 
-        if( TextUtils.isEmpty(etphno.getText())&& etphno.getTextSize()<10){
-            etphno.setError( "Please Provide a Valid Contact Number" );
+        if( TextUtils.isEmpty(etphno.getText())){
+            etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+        } else if(etphno.getTextSize()<10){
+            etaadhar.setError( "Please Provide a Valid Aadhar Number" );
         }
 
         //code to verify wether user has entered valid aadhar card number
@@ -71,7 +73,7 @@ public class Profile extends AppCompatActivity
             String aadharnum = etaadhar.getText().toString();
             Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
             if (checkaadhar==false){
-                etaadhar.setError("please enter valid aadhar card number");
+                etaadhar.setError( "Please Provide a Valid Aadhar Number" );
             }
         }
 
