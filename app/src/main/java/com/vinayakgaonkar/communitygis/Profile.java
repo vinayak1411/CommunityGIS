@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -58,8 +59,23 @@ public class Profile extends AppCompatActivity
         etname =(EditText)findViewById(R.id.Name);
         etphno = (EditText)findViewById(R.id.Contact);
         etaadhar = (EditText)findViewById(R.id.AdharNo);
-        String aadharnum = etaadhar.getText().toString();
-        Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
+
+        if( TextUtils.isEmpty(etphno.getText())&& etphno.getTextSize()<10){
+            etphno.setError( "Please Provide a Valid Contact Number" );
+        }
+
+        //code to verify wether user has entered valid aadhar card number
+        if( TextUtils.isEmpty(etaadhar.getText())&& etaadhar.getTextSize()<12){
+            etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+        }else {
+            String aadharnum = etaadhar.getText().toString();
+            Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
+            if (checkaadhar==false){
+                etaadhar.setError("please enter valid aadhar card number");
+            }
+        }
+
+
         etemail = (EditText)findViewById(R.id.Email);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
         Glide.with(Profile.this)
