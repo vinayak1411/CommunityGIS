@@ -77,6 +77,7 @@ public class Userform extends AppCompatActivity
         setContentView(R.layout.activity_userform);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Give Feedback");
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(Userform.this);
         clk_photo = (Button)findViewById(R.id.capture);

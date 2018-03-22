@@ -47,7 +47,7 @@ public class UserFeedback extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_feedback);
-        setTitle("Feedback");
+        setTitle("Your Feedbacks");
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
@@ -98,13 +98,12 @@ public class UserFeedback extends AppCompatActivity
                                 String ratings = feedbackObject.getString("ratings");
                                 String image_url = feedbackObject.getString("image_url");
                                 Feedback feedback = new Feedback(id, address, amenity_type,amenity_category, amenity_comment, image_url, ratings);
-                                Toast.makeText(getApplicationContext(),"coming 1",Toast.LENGTH_SHORT).show();
+
                                 feedbackList.add(feedback);
 
 
                                      adapter = new FeedbackAdapter(UserFeedback.this, feedbackList);
                                     recyclerView.setAdapter(adapter);
-                                    Toast.makeText(getApplicationContext(),"coming 2",Toast.LENGTH_SHORT).show();
                                 }catch(Exception e){
                                     Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                                 }

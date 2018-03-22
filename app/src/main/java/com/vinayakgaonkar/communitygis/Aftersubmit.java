@@ -14,7 +14,7 @@ public class Aftersubmit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aftersubmit);
-
+        setTitle("Thank You!");
         map = (Button)findViewById(R.id.BacktoMap);
         map.setOnClickListener(new View.OnClickListener() {
             @Override

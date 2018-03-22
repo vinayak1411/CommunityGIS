@@ -57,16 +57,16 @@ public class Profile extends AppCompatActivity
         etphno = (EditText)findViewById(R.id.Contact);
         etaadhar = (EditText)findViewById(R.id.AdharNo);
         etemail = (EditText)findViewById(R.id.Email);
+
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
         int selectedId=radioGroup.getCheckedRadioButtonId();
         gender=(RadioButton)findViewById(selectedId);
+        Gender_str=gender.getText().toString();
+
         etname.setText(user.getDisplayName());
         etemail.setText(user.getEmail());
         Save = (Button)findViewById(R.id.Save_btn);
-        try {
-            Gender_str=gender.getText().toString();
 
-        }catch (NullPointerException npex){}
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
