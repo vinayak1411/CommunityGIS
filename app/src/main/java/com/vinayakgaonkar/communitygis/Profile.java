@@ -57,11 +57,7 @@ public class Profile extends AppCompatActivity
         etphno = (EditText)findViewById(R.id.Contact);
         etaadhar = (EditText)findViewById(R.id.AdharNo);
         etemail = (EditText)findViewById(R.id.Email);
-
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
-        int selectedId=radioGroup.getCheckedRadioButtonId();
-        gender=(RadioButton)findViewById(selectedId);
-        Gender_str=gender.getText().toString();
 
         etname.setText(user.getDisplayName());
         etemail.setText(user.getEmail());
@@ -75,6 +71,12 @@ public class Profile extends AppCompatActivity
         });
 
     }//oncreate
+
+    public void rbclick(View view){
+        int selectedId=radioGroup.getCheckedRadioButtonId();
+        gender=(RadioButton)findViewById(selectedId);
+        Gender_str=gender.getText().toString();
+    }
 
     private void insertdata(){
 
