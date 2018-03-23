@@ -56,10 +56,8 @@
         android:id="@+id/imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/submit"
-        android:layout_below="@+id/spinner4"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <Button
@@ -86,9 +84,8 @@
         android:id="@+id/comment_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/capture"
-        android:layout_below="@+id/capture"
-        android:layout_marginTop="20dp"
+        android:layout_above="@+id/rating"
+        android:layout_alignEnd="@+id/ratingBar"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -106,9 +103,9 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/submit"
         android:layout_below="@+id/comment_value"
-        android:layout_marginTop="22dp" />
+        android:layout_marginStart="21dp"
+        android:layout_toEndOf="@+id/category" />
 
     <TextView
         android:id="@+id/rating_value"
@@ -121,8 +118,8 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/spinner3"
         android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/spinner4"
         android:text="Submit" />
 
     <TextView

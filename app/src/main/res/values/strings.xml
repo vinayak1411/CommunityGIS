@@ -14,6 +14,8 @@
         <item>Road</item>
         <item>School</item>
         <item>Hospital</item>
+        <item>Public Toilets</item>
+        <item>Play Ground</item>
 
     </string-array>
 
@@ -38,5 +40,21 @@
         <item>No Medical Nearby</item>
         <item>No Ambulance</item>
     </string-array>
+
+    <string-array name="Category_PublicToilets">
+        <item>No Water Supply</item>
+        <item>No Electricity</item>
+        <item>No Timely Cleaning</item>
+        <item>No Supervisor</item>
+        <item>No Latch For Doors</item>
+    </string-array>
+
+    <string-array name="Category_PlayGround">
+        <item>Illegal Construction</item>
+        <item>No Proper Maintainence</item>
+        <item>Illegal Parking</item>
+        <item>Presence of Garbage </item>
+    </string-array>
+
     <string name="title_activity_user_feedback">UserFeedback</string>
 </resources>

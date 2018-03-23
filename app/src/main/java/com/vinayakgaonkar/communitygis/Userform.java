@@ -24,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.test.mock.MockPackageManager;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,130 +99,153 @@ public class Userform extends AppCompatActivity
         imageView = (ImageView) findViewById(R.id.imageview);
         amenity_category_spinner = (Spinner) findViewById(R.id.spinner4);
         amenity_type_spinner = (Spinner) findViewById(R.id.spinner3);
-        //rating bar
-        ListenerForRatingBar();
-        //disable button if user has no camera
 
-        if (!hascamera()) {
-            clk_photo.setEnabled(false);
-        }
-
-        //spinner
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.amenity_type, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        amenity_type_spinner.setAdapter(adapter);
-
-        amenity_type_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view,int position,long id) {
-                String Select_category = String.valueOf(amenity_type_spinner.getSelectedItem());
-
-                switch (Select_category){
-
-                    case "Road":ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_Road, android.R.layout.simple_spinner_item);
-                        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        amenity_category_spinner.setAdapter(adapter2);
-                        break;
-                    case "School":ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_School, android.R.layout.simple_spinner_item);
-                        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        amenity_category_spinner.setAdapter(adapter3);
-                        break;
-                    case "Hospital":ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_Hospital, android.R.layout.simple_spinner_item);
-                        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        amenity_category_spinner.setAdapter(adapter4);
-                        break;
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        //navigation
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        //nagivartion code ends
-
-        //location
         try {
-            if (ActivityCompat.checkSelfPermission(this, mPermission)
-                    != MockPackageManager.PERMISSION_GRANTED) {
+            //rating bar
+            ListenerForRatingBar();
+            //disable button if user has no camera
 
-                ActivityCompat.requestPermissions(this, new String[]{mPermission},
-                        REQUEST_CODE_PERMISSION);
-
-
+            if (!hascamera()) {
+                clk_photo.setEnabled(false);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        getloc.setOnClickListener(new View.OnClickListener() {
+            //spinner
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.amenity_type, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            amenity_type_spinner.setAdapter(adapter);
 
-            @Override
-            public void onClick(View arg0) {
+            amenity_type_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                    String Select_category = String.valueOf(amenity_type_spinner.getSelectedItem());
 
-                gps = new GPSTracker(Userform.this);
+                    switch (Select_category) {
 
-                if(gps.canGetLocation()){
+                        case "Road":
+                            ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_Road, android.R.layout.simple_spinner_item);
+                            adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            amenity_category_spinner.setAdapter(adapter2);
+                            break;
+                        case "School":
+                            ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_School, android.R.layout.simple_spinner_item);
+                            adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            amenity_category_spinner.setAdapter(adapter3);
+                            break;
+                        case "Hospital":
+                            ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_Hospital, android.R.layout.simple_spinner_item);
+                            adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            amenity_category_spinner.setAdapter(adapter4);
+                            break;
+                        case "Public Toilets":
+                            ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_PublicToilets, android.R.layout.simple_spinner_item);
+                            adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            amenity_category_spinner.setAdapter(adapter5);
+                            break;
+                        case "Play Ground":
+                            ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(Userform.this, R.array.Category_PlayGround, android.R.layout.simple_spinner_item);
+                            adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            amenity_category_spinner.setAdapter(adapter6);
+                            break;
 
-                    latitude = gps.getLatitude();
-                    longitude = gps.getLongitude();
-
-                    try {
-                        Geocoder geocoder = new Geocoder(Userform.this, Locale.getDefault());
-                        if (geocoder.isPresent()) {
-                            try {
-                                addressList = geocoder.getFromLocation(latitude, longitude, 1);
-                            } catch (NullPointerException npe) {
-                                npe.printStackTrace();
-                            }
-                            if (addressList != null) {
-                                String geocodeaddress = addressList.get(0).getAddressLine(0);
-                                address.setText(geocodeaddress);
-                            } else {
-                                 address.setText("latitude:"+latitude+",longitude:"+longitude);
-                            }
-                        }
                     }
-                    catch (IOException e) {
-                        Toast.makeText(getApplicationContext(), "geocoder IO exception ,Internet Connection Required ", Toast.LENGTH_LONG).show();
-                    }
-                    catch(NullPointerException npegc){
-                        Toast.makeText(getApplicationContext(), "gecoder null pointer exception ", Toast.LENGTH_LONG).show();
-
-                    }
-
-
-                    Toast.makeText(getApplicationContext(), "Your Location is - \nLat: "
-                            + latitude + "\nLong: " + longitude, Toast.LENGTH_SHORT).show();
-                }else{
-
-                    gps.showSettingsAlert();
                 }
 
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+            //navigation
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
+
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            //nagivartion code ends
+
+            //location
+            try {
+                if (ActivityCompat.checkSelfPermission(this, mPermission)
+                        != MockPackageManager.PERMISSION_GRANTED) {
+
+                    ActivityCompat.requestPermissions(this, new String[]{mPermission},
+                            REQUEST_CODE_PERMISSION);
+
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
+
+            getloc.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+
+                    gps = new GPSTracker(Userform.this);
+
+                    if (gps.canGetLocation()) {
+
+                        latitude = gps.getLatitude();
+                        longitude = gps.getLongitude();
+
+                        try {
+                            Geocoder geocoder = new Geocoder(Userform.this, Locale.getDefault());
+                            if (geocoder.isPresent()) {
+                                try {
+                                    addressList = geocoder.getFromLocation(latitude, longitude, 1);
+                                } catch (NullPointerException npe) {
+                                    npe.printStackTrace();
+                                }
+                                if (addressList != null) {
+                                    String geocodeaddress = addressList.get(0).getAddressLine(0);
+                                    address.setText(geocodeaddress);
+                                } else {
+                                    address.setText("latitude:" + latitude + ",longitude:" + longitude);
+                                }
+                            }
+                        } catch (IOException e) {
+                            Toast.makeText(getApplicationContext(), "geocoder IO exception ,Internet Connection Required ", Toast.LENGTH_LONG).show();
+                        } catch (NullPointerException npegc) {
+                            Toast.makeText(getApplicationContext(), "gecoder null pointer exception ", Toast.LENGTH_LONG).show();
+
+                        }
 
 
+                        Toast.makeText(getApplicationContext(), "Your Location is - \nLat: "
+                                + latitude + "\nLong: " + longitude, Toast.LENGTH_SHORT).show();
+                    } else {
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            inserData();
-            }
-        });
+                        gps.showSettingsAlert();
+                    }
+
+                }
+            });
 
 
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(imageView.getDrawable() == null){
+                        Toast.makeText(Userform.this,"Please click a photo",Toast.LENGTH_SHORT).show();
+                        launchcamera(null );
+                    }
+                    if(TextUtils.isEmpty(comment.getText())){
+                        comment.setText("No Comments");
+                    }
+
+                    inserData();
+                }
+            });
+
+        }
+        catch (NullPointerException npe){
+            Toast.makeText(getApplicationContext(),"null pointer exception occured",Toast.LENGTH_SHORT).show();
+        }
     }//oncreate
 
     public void haveNetworkConnection() {
@@ -313,7 +337,7 @@ public class Userform extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.hide();
-                        Toast.makeText(Userform.this,"error occured", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Userform.this,error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }) {
             @Override
