@@ -165,22 +165,27 @@ public class UserFeedback extends AppCompatActivity
         if (id == R.id.nav_profile) {
             Intent profile = new Intent(UserFeedback.this,Profile.class);
             startActivity(profile);
+            finish();
         } else if (id == R.id.nav_feedback) {
             Intent form = new Intent(UserFeedback.this,Userform.class);
             startActivity(form);
+            finish();
 
         } else if (id == R.id.nav_use) {
             Intent use = new Intent(UserFeedback.this,Howtouse.class);
             startActivity(use);
+            finish();
 
         } else if (id == R.id.nav_home) {
             Intent home = new Intent(UserFeedback.this,WebviewActivity.class);
             startActivity(home);
+            finish();
 
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent main = new Intent(UserFeedback.this,GoogleSignIn.class);
             startActivity(main);
+            finish();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

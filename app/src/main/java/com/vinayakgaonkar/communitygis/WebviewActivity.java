@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -116,9 +117,12 @@ public class WebviewActivity extends AppCompatActivity
             uemail.setText(user.getEmail());
 
 
-          /*  Glide.with(WebviewActivity.this)
+          Glide.with(WebviewActivity.this)
                     .load(user.getPhotoUrl())
-                    .into(profilepic);*/
+                    .apply(new RequestOptions()
+                    .override(100, 100)
+                    .centerCrop())
+                    .into(profilepic);
 
         }
     }
