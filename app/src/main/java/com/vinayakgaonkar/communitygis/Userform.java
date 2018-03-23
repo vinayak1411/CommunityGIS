@@ -96,6 +96,9 @@ public class Userform extends AppCompatActivity
         address =(EditText)findViewById(R.id.address);
         address.setInputType(InputType.TYPE_NULL);
         comment = (EditText)findViewById(R.id.comment_value);
+        if(TextUtils.isEmpty(comment.getText())){
+            comment.setError("Field Required");
+        }
         imageView = (ImageView) findViewById(R.id.imageview);
         amenity_category_spinner = (Spinner) findViewById(R.id.spinner4);
         amenity_type_spinner = (Spinner) findViewById(R.id.spinner3);
@@ -230,14 +233,7 @@ public class Userform extends AppCompatActivity
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(imageView.getDrawable() == null){
-                        Toast.makeText(Userform.this,"Please click a photo",Toast.LENGTH_SHORT).show();
-                        launchcamera(null );
-                    }
-                    if(TextUtils.isEmpty(comment.getText())){
-                        comment.setText("No Comments");
-                    }
-
+                    
                     inserData();
                 }
             });
