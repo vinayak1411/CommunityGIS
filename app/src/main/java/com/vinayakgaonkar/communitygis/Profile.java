@@ -45,6 +45,7 @@ public class Profile extends AppCompatActivity
     RadioButton  gender ;
     Button Save;
     ImageView displaypic;
+    Boolean checkphno,checkaadharno;
     private String Gender_str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,18 +63,22 @@ public class Profile extends AppCompatActivity
 
         if( TextUtils.isEmpty(etphno.getText())){
             etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+            checkphno = false;
         } else if(etphno.getTextSize()<10){
             etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+            checkphno =false;
         }
 
         //code to verify wether user has entered valid aadhar card number
         if( TextUtils.isEmpty(etaadhar.getText())&& etaadhar.getTextSize()<12){
             etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+            checkaadharno = false;
         }else {
             String aadharnum = etaadhar.getText().toString();
             Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
             if (checkaadhar==false){
                 etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+                checkaadharno = false;
             }
         }
 
@@ -109,8 +114,22 @@ public class Profile extends AppCompatActivity
         final String name =user.getDisplayName().toString();
         final String email =user.getEmail().toString();
         gender_str =Gender_str;
-        aadhar = etaadhar.getText().toString();
-        phno = etphno.getText().toString();
+
+
+
+        if(checkphno = false){
+            phno = "Not Set";
+        }
+        else {
+            phno = etphno.getText().toString();
+        }
+
+        if(checkaadharno = false){
+            aadhar ="Not Set";
+        }
+        else {
+            aadhar = etaadhar.getText().toString();
+        }
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 URL_Profile,

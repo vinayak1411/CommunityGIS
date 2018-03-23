@@ -1,14 +1,20 @@
 package com.vinayakgaonkar.communitygis;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
@@ -80,6 +86,7 @@ public class Userform extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Give Feedback");
+        haveNetworkConnection();
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(Userform.this);
         clk_photo = (Button)findViewById(R.id.capture);
@@ -217,7 +224,41 @@ public class Userform extends AppCompatActivity
 
     }//oncreate
 
+    public void haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
 
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        if (haveConnectedWifi == false && haveConnectedMobile == false){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Connect to Internet or quit")
+                    .setCancelable(false)
+                    .setPositiveButton("Connect to Internet", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startActivity(new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS));
+                        }
+                    })
+                    .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+
+
+        }
+    }//hasnetworkconnection
 
     //to insert data into database
     private void inserData(){
