@@ -402,25 +402,30 @@ public class Userform extends AppCompatActivity
             // Handle the camera action
             Intent use = new Intent(Userform.this,Howtouse.class);
             startActivity(use);
+            finish();
 
         } else if (id == R.id.nav_profile) {
             Intent profile = new Intent(Userform.this,Profile.class);
             startActivity(profile);
+            finish();
 
         }else if (id ==R.id.nav_userfeedback){
             Intent userfeedback = new Intent(Userform.this,UserFeedback.class);
             startActivity(userfeedback);
+            finish();
         }
 
 
         else if (id == R.id.nav_home) {
             Intent home = new Intent(Userform.this,WebviewActivity.class);
             startActivity(home);
+            finish();
 
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent main = new Intent(Userform.this,GoogleSignIn.class);
             startActivity(main);
+            finish();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

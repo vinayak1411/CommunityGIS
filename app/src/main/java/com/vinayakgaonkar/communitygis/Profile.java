@@ -58,32 +58,11 @@ public class Profile extends AppCompatActivity
         progressDialog = new ProgressDialog(Profile.this);
         displaypic = (ImageView)findViewById(R.id.Profile_pic);
         etname =(EditText)findViewById(R.id.Name);
+        etname.setEnabled(false);
         etphno = (EditText)findViewById(R.id.Contact);
         etaadhar = (EditText)findViewById(R.id.AdharNo);
-
-        if( TextUtils.isEmpty(etphno.getText())){
-            etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-            checkphno = false;
-        } else if(etphno.getTextSize()<10){
-            etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-            checkphno =false;
-        }
-
-        //code to verify wether user has entered valid aadhar card number
-        if( TextUtils.isEmpty(etaadhar.getText())&& etaadhar.getTextSize()<12){
-            etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-            checkaadharno = false;
-        }else {
-            String aadharnum = etaadhar.getText().toString();
-            Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
-            if (checkaadhar==false){
-                etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-                checkaadharno = false;
-            }
-        }
-
-
         etemail = (EditText)findViewById(R.id.Email);
+        etemail.setEnabled(false);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
         Glide.with(Profile.this)
                 .load(user.getPhotoUrl())
@@ -95,6 +74,27 @@ public class Profile extends AppCompatActivity
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if( TextUtils.isEmpty(etphno.getText())){
+                    etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+                    checkphno = false;
+                } else if(etphno.getTextSize()<10){
+                    etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+                    checkphno =false;
+                }
+
+                //code to verify wether user has entered valid aadhar card number
+                if( TextUtils.isEmpty(etaadhar.getText())&& etaadhar.getTextSize()<12){
+                    etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+                    checkaadharno = false;
+                }else {
+                    String aadharnum = etaadhar.getText().toString();
+                    Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
+                    if (checkaadhar==false){
+                        etaadhar.setError( "Please Provide a Valid Aadhar Number" );
+                        checkaadharno = false;
+                    }
+                }
+
                 insertdata();
             }
         });
@@ -156,7 +156,7 @@ public class Profile extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.hide();
-                        Toast.makeText(Profile.this,"error occured while saving data", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Profile.this,"Please select your gender", Toast.LENGTH_LONG).show();
                     }
                 }) {
             @Override
@@ -204,21 +204,24 @@ public class Profile extends AppCompatActivity
         } else if (id == R.id.nav_home) {
             Intent home = new Intent(Profile.this,WebviewActivity.class);
             startActivity(home);
+            finish();
 
         }else if (id ==R.id.nav_userfeedback){
             Intent userfeedback = new Intent(Profile.this,UserFeedback.class);
             startActivity(userfeedback);
+            finish();
         }
 
         else if (id == R.id.nav_use) {
             Intent use = new Intent(Profile.this,Howtouse.class);
             startActivity(use);
+            finish();
 
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent main = new Intent(Profile.this,GoogleSignIn.class);
             startActivity(main);
-
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

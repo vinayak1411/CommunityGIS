@@ -26,16 +26,16 @@
         android:layout_alignBottom="@+id/Name"
         android:layout_alignParentStart="true"
         android:layout_marginStart="34dp"
-        android:text="Name" />
+        android:text="Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView_gender"
-        android:layout_marginBottom="33dp"
-        android:layout_marginStart="22dp"
-        android:layout_toEndOf="@+id/textView_gender"
+        android:layout_above="@+id/radioGroup"
+        android:layout_alignStart="@+id/radioGroup"
+        android:layout_marginBottom="26dp"
         android:ems="10"
         android:hint="Enter Your Full Name"
         android:inputType="textPersonName" />
@@ -45,10 +45,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/Email"
-        android:layout_alignStart="@+id/textView_email"
-        android:layout_marginBottom="87dp"
-        android:layout_marginStart="10dp"
-        android:text="Gender" />
+        android:layout_alignEnd="@+id/textView_name"
+        android:layout_marginBottom="88dp"
+        android:text="Gender"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -91,7 +91,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Email"
         android:layout_alignStart="@+id/textView_name"
-        android:text="Email" />
+        android:text="Email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
         android:id="@+id/Email"
@@ -111,7 +112,8 @@
         android:layout_alignBaseline="@+id/AdharNo"
         android:layout_alignBottom="@+id/AdharNo"
         android:layout_alignStart="@+id/textView_email"
-        android:text="Adhar Number" />
+        android:text="Adhar Number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
         android:id="@+id/AdharNo"
@@ -132,7 +134,8 @@
         android:layout_above="@+id/Save_btn"
         android:layout_alignStart="@+id/textView_adhar"
         android:layout_marginBottom="25dp"
-        android:text="Contact Number" />
+        android:text="Contact Number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
         android:id="@+id/Contact"
