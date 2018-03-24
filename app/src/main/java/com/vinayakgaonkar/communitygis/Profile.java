@@ -105,7 +105,7 @@ public class Profile extends AppCompatActivity
                         etaadhar.setText( "Invalid " );
                     }
                 }
-                progressDialog.setMessage("Uploading User Feedback...");
+                progressDialog.setMessage("Saving Your Data...");
                 progressDialog.show();
                 insertdata();
 

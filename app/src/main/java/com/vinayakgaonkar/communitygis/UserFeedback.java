@@ -1,6 +1,7 @@
 package com.vinayakgaonkar.communitygis;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -48,6 +49,7 @@ public class UserFeedback extends AppCompatActivity
     FeedbackAdapter adapter;
     List<Feedback> feedbackList;
     FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +59,15 @@ public class UserFeedback extends AppCompatActivity
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-
+            progressDialog = new ProgressDialog(UserFeedback.this);
             haveNetworkConnection();
             feedbackList = new ArrayList<>();
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             loadFeedback();
-
+            progressDialog.setMessage("Loading Your Feebacks Please wait...");
+            progressDialog.show();
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -90,6 +93,7 @@ public class UserFeedback extends AppCompatActivity
                             JSONArray array = new JSONArray(response);
                             //traversing through all the object
                            if(array.length()!=0) {
+                               progressDialog.hide();
                                 for (int i = 0; i < array.length(); i++) {
                                     try {
                                         //getting product object from json array
@@ -117,6 +121,7 @@ public class UserFeedback extends AppCompatActivity
 
                             }
                             else{
+                               progressDialog.hide();
                                 Toast.makeText(UserFeedback.this,"You Have Not Submitted Any Feedback Yet ",Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
