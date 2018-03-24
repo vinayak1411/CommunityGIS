@@ -131,7 +131,16 @@ public class Profile extends AppCompatActivity
         if(sharedPref.getBoolean("checkexist",false)==true) {
             etphno.setText(sharedPref.getString("contactno", ""));
             etaadhar.setText(sharedPref.getString("aadharnum", ""));
-            
+            String selectedgender = sharedPref.getString("gender_sp","");
+
+            if(selectedgender == "Male"){
+                radioGroup.check(R.id.Radio_male);
+            }else if(selectedgender == "Female"){
+                radioGroup.check(R.id.Radio_female);
+            }else{
+                radioGroup.check(R.id.Radio_Trans);
+            }
+
         }
     }
 
