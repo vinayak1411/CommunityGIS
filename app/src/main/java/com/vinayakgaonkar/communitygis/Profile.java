@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Profile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -134,15 +135,17 @@ public class Profile extends AppCompatActivity
             etphno.setText(sharedPref.getString("contactno", ""));
             etaadhar.setText(sharedPref.getString("aadharnum", ""));
             String selectedgender = sharedPref.getString("gender_sp","");
-
-            if(selectedgender == "Male"){
-                male.setChecked(true);
-            }else if(selectedgender == "Female"){
-                female.setChecked(true);
-            }else if(selectedgender == "Transgender") {
-                trans.setChecked(true);
+            try {
+                if (Objects.equals(selectedgender, "Male")) {
+                    male.setChecked(true);
+                } else if (Objects.equals(selectedgender, "Female")) {
+                    female.setChecked(true);
+                } else if (Objects.equals(selectedgender, "Transgender")) {
+                    trans.setChecked(true);
+                }
+            }catch (Exception excp){
+                Toast.makeText(Profile.this,"Inside Loadpref:"+excp.toString(),Toast.LENGTH_LONG).show();
             }
-
         }
     }
 
