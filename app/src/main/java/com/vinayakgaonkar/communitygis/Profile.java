@@ -48,9 +48,8 @@ public class Profile extends AppCompatActivity
     RadioButton  gender,male,female,trans ;
     Button Save;
     ImageView displaypic;
-    Boolean checkphno,checkaadharno;
     Boolean sharedprefboolean= false;
-    int selectedId = 0;
+
     private String Gender_str;
 
 
@@ -85,24 +84,24 @@ public class Profile extends AppCompatActivity
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if( TextUtils.isEmpty(etphno.getText())){
-                    etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-                    checkphno = false;
+                    etphno.setError( "Empty" );
+
                 } else if(etphno.getTextSize()<10){
-                    etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-                    checkphno =false;
+                    etphno.setError( "Invalid");
+
                 }
 
                 //code to verify wether user has entered valid aadhar card number
                 if( TextUtils.isEmpty(etaadhar.getText())&& etaadhar.getTextSize()<12){
-                    etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-                    checkaadharno = false;
+                    etaadhar.setText( "12 digit req" );
+
                 }else {
                     String aadharnum = etaadhar.getText().toString();
                     Boolean checkaadhar = ValidateAadhar.validateVerhoeff(aadharnum);
                     if (checkaadhar==false){
-                        etaadhar.setError( "Please Provide a Valid Aadhar Number" );
-                        checkaadharno = false;
+                        etaadhar.setText( "Invalid " );
                     }
                 }
 
@@ -114,7 +113,7 @@ public class Profile extends AppCompatActivity
     }//oncreate
 
     public void rbclick(View view){
-        selectedId=radioGroup.getCheckedRadioButtonId();
+        int selectedId=radioGroup.getCheckedRadioButtonId();
         gender=(RadioButton)findViewById(selectedId);
         Gender_str=gender.getText().toString();
     }
@@ -137,7 +136,6 @@ public class Profile extends AppCompatActivity
             String selectedgender = sharedPref.getString("gender_sp","");
 
             if(selectedgender == "Male"){
-                Toast.makeText(Profile.this,selectedgender,Toast.LENGTH_SHORT).show();
                 male.setChecked(true);
             }else if(selectedgender == "Female"){
                 female.setChecked(true);
@@ -207,7 +205,7 @@ public class Profile extends AppCompatActivity
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
-    }
+    }//insertdata
 
     @Override
     public void onBackPressed() {
