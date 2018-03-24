@@ -190,7 +190,7 @@ public class Profile extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.hide();
-                        Toast.makeText(Profile.this,"please select Gender", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Profile.this,"please select Gender again", Toast.LENGTH_LONG).show();
                     }
                 }) {
             @Override

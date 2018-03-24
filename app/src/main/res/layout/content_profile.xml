@@ -60,7 +60,7 @@
 
         <RadioButton
             android:id="@+id/Radio_male"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/radioGroup"
             android:layout_toEndOf="@+id/textView_contact"
@@ -70,7 +70,7 @@
 
         <RadioButton
             android:id="@+id/Radio_female"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="rbclick"
@@ -104,7 +104,8 @@
         android:ems="10"
         android:hint="Enter Your Email"
         android:inputType="textPersonName"
-        tools:textColor="#000" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        tools:textColor="@android:color/background_dark" />
 
     <TextView
         android:id="@+id/textView_adhar"
