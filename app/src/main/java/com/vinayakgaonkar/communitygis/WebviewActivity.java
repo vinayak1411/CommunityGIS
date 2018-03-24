@@ -53,7 +53,7 @@ public class WebviewActivity extends AppCompatActivity
         String  url = "http://try.cartoview.net/apps/cartoview_feature_list/491/view/";
         webView.loadUrl(url);
 
-        //loaduserinfo();
+
 
         haveNetworkConnection();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

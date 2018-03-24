@@ -25,7 +25,7 @@
         android:layout_below="@+id/address"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
-        android:text="Get Current Address" />
+        android:text="Fetch Address" />
 
     <TextView
         android:id="@+id/amenity"
@@ -35,7 +35,7 @@
         android:layout_marginTop="22dp"
         android:layout_toStartOf="@+id/fetch_address"
         android:text="Select Amenity"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/spinner3"
@@ -56,7 +56,7 @@
         android:id="@+id/imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignEnd="@+id/fetch_address"
         android:layout_centerVertical="true"
         app:srcCompat="@drawable/ic_launcher_background" />
 
@@ -73,19 +73,16 @@
         android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/comment_value"
-        android:layout_alignBottom="@+id/comment_value"
+        android:layout_above="@+id/ratingBar"
         android:layout_alignStart="@+id/amenity"
-        android:layout_marginStart="12dp"
-        android:text="Comment"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:text="Comment" />
 
     <EditText
         android:id="@+id/comment_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rating"
-        android:layout_alignEnd="@+id/ratingBar"
+        android:layout_alignBottom="@+id/comment"
+        android:layout_alignStart="@+id/fetch_address"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -95,17 +92,15 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/submit"
         android:layout_alignStart="@+id/comment"
-        android:layout_marginBottom="42dp"
-        android:text="Rating"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_marginBottom="15dp"
+        android:text="Rating" />
 
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/comment_value"
-        android:layout_marginStart="21dp"
-        android:layout_toEndOf="@+id/category" />
+        android:layout_above="@+id/submit"
+        android:layout_alignStart="@+id/comment_value" />
 
     <TextView
         android:id="@+id/rating_value"
@@ -118,8 +113,8 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/spinner3"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/spinner4"
         android:text="Submit" />
 
     <TextView
@@ -129,5 +124,5 @@
         android:layout_alignTop="@+id/spinner4"
         android:layout_toStartOf="@+id/fetch_address"
         android:text="Select category"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textStyle="bold" />
 </RelativeLayout>

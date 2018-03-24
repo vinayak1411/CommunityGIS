@@ -233,16 +233,20 @@ public class Userform extends AppCompatActivity
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    
+
                     inserData();
                 }
             });
+
+
 
         }
         catch (NullPointerException npe){
             Toast.makeText(getApplicationContext(),"null pointer exception occured",Toast.LENGTH_SHORT).show();
         }
     }//oncreate
+
+
 
     public void haveNetworkConnection() {
         boolean haveConnectedWifi = false;
