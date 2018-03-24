@@ -105,7 +105,8 @@ public class Profile extends AppCompatActivity
                         etaadhar.setText( "Invalid " );
                     }
                 }
-
+                progressDialog.setMessage("Uploading User Feedback...");
+                progressDialog.show();
                 insertdata();
 
             }
@@ -176,6 +177,7 @@ public class Profile extends AppCompatActivity
                             boolean success = jsonObject.getBoolean("success");
 
                             if(success){
+                                progressDialog.hide();
                                 Toast.makeText(Profile.this,"Profile Uploaded Successfully", Toast.LENGTH_SHORT).show();
                             }
 
