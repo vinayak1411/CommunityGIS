@@ -1,6 +1,7 @@
 package com.vinayakgaonkar.communitygis;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -48,8 +49,10 @@ public class Profile extends AppCompatActivity
     Button Save;
     ImageView displaypic;
     Boolean checkphno,checkaadharno;
+    Boolean sharedprefboolean= false;
+    int selectedId = 0;
     private String Gender_str;
-    SharedPreferences sharepref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +78,7 @@ public class Profile extends AppCompatActivity
         etname.setText(user.getDisplayName());
         etemail.setText(user.getEmail());
         Save = (Button)findViewById(R.id.Save_btn);
-
+        loadpref();
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,16 +104,38 @@ public class Profile extends AppCompatActivity
                 }
 
                 insertdata();
+
             }
         });
 
     }//oncreate
 
     public void rbclick(View view){
-        int selectedId=radioGroup.getCheckedRadioButtonId();
+        selectedId=radioGroup.getCheckedRadioButtonId();
         gender=(RadioButton)findViewById(selectedId);
         Gender_str=gender.getText().toString();
     }
+
+    public void savepref(String contact,String aadharnum,String gender_pref,Boolean spbool) {
+        SharedPreferences sharedPref = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("contactno", contact);
+        editor.putString("aadharnum", aadharnum);
+        editor.putString("gender_sp", gender_pref);
+        editor.putBoolean("checkexist", spbool);
+        editor.apply();
+    }
+
+    public void loadpref(){
+        SharedPreferences sharedPref = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        if(sharedPref.getBoolean("checkexist",false)==true) {
+
+            etphno.setText(sharedPref.getString("contactno", ""));
+            etaadhar.setText(sharedPref.getString("aadharnum", ""));
+        }
+    }
+
+
 
     private void insertdata(){
 
@@ -119,7 +144,7 @@ public class Profile extends AppCompatActivity
         final String name =user.getDisplayName().toString();
         final String email =user.getEmail().toString();
         gender_str =Gender_str;
-
+        sharedprefboolean = true;
 
 
         if(checkphno = false){
@@ -135,6 +160,7 @@ public class Profile extends AppCompatActivity
         else {
             aadhar = etaadhar.getText().toString();
         }
+        savepref(phno,aadhar,gender_str,sharedprefboolean);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 URL_Profile,
