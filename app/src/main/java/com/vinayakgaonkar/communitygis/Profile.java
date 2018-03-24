@@ -45,7 +45,7 @@ public class Profile extends AppCompatActivity
     private static final String URL_Profile = "https://pratiksrane27.000webhostapp.com/Android_Data/profileInsert.php";
     EditText etname,etphno,etaadhar,etemail;
     RadioGroup radioGroup;
-    RadioButton  gender ;
+    RadioButton  gender,male,female,trans ;
     Button Save;
     ImageView displaypic;
     Boolean checkphno,checkaadharno;
@@ -64,6 +64,9 @@ public class Profile extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         progressDialog = new ProgressDialog(Profile.this);
+        male = (RadioButton)findViewById(R.id.Radio_male);
+        female = (RadioButton)findViewById(R.id.Radio_female);
+        trans = (RadioButton)findViewById(R.id.Radio_Trans);
         displaypic = (ImageView)findViewById(R.id.Profile_pic);
         etname =(EditText)findViewById(R.id.Name);
         etname.setEnabled(false);
@@ -134,11 +137,12 @@ public class Profile extends AppCompatActivity
             String selectedgender = sharedPref.getString("gender_sp","");
 
             if(selectedgender == "Male"){
-                radioGroup.check(R.id.Radio_male);
+                Toast.makeText(Profile.this,selectedgender,Toast.LENGTH_SHORT).show();
+                male.setChecked(true);
             }else if(selectedgender == "Female"){
-                radioGroup.check(R.id.Radio_female);
-            }else{
-                radioGroup.check(R.id.Radio_Trans);
+                female.setChecked(true);
+            }else if(selectedgender == "Transgender") {
+                trans.setChecked(true);
             }
 
         }
@@ -156,8 +160,7 @@ public class Profile extends AppCompatActivity
         sharedprefboolean = true;
         phno = etphno.getText().toString();
         aadhar = etaadhar.getText().toString();
-
-        savepref(phno,aadhar,gender_str,sharedprefboolean);
+        savepref(phno,aadhar,Gender_str,sharedprefboolean);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 URL_Profile,
