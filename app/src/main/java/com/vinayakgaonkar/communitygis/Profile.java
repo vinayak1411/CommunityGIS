@@ -129,9 +129,9 @@ public class Profile extends AppCompatActivity
     public void loadpref(){
         SharedPreferences sharedPref = getSharedPreferences("profile", Context.MODE_PRIVATE);
         if(sharedPref.getBoolean("checkexist",false)==true) {
-
             etphno.setText(sharedPref.getString("contactno", ""));
             etaadhar.setText(sharedPref.getString("aadharnum", ""));
+            
         }
     }
 
@@ -145,21 +145,9 @@ public class Profile extends AppCompatActivity
         final String email =user.getEmail().toString();
         gender_str =Gender_str;
         sharedprefboolean = true;
+        phno = etphno.getText().toString();
+        aadhar = etaadhar.getText().toString();
 
-
-        if(checkphno = false){
-            phno = "Not Set";
-        }
-        else {
-            phno = etphno.getText().toString();
-        }
-
-        if(checkaadharno = false){
-            aadhar ="Not Set";
-        }
-        else {
-            aadhar = etaadhar.getText().toString();
-        }
         savepref(phno,aadhar,gender_str,sharedprefboolean);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -187,7 +175,7 @@ public class Profile extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.hide();
-                        Toast.makeText(Profile.this,"Please select your gender", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Profile.this,error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }) {
             @Override

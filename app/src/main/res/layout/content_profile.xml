@@ -56,8 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView_gender"
-        android:layout_centerHorizontal="true"
-        android:checkedButton="@+id/Radio_male">
+        android:layout_centerHorizontal="true">
 
         <RadioButton
             android:id="@+id/Radio_male"
