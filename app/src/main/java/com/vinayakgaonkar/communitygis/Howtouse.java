@@ -54,23 +54,25 @@ public class Howtouse extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-            Intent profile = new Intent(Howtouse.this,Profile.class);
+            Intent profile = new Intent(Howtouse.this,WebviewActivity.class);
             startActivity(profile);
+            finish();
         } else if (id == R.id.nav_feedback) {
 
             Intent feedback = new Intent(Howtouse.this,Userform.class);
             startActivity(feedback);
+            finish();
 
         } else if (id ==R.id.nav_userfeedback){
             Intent userfeedback = new Intent(Howtouse.this,UserFeedback.class);
             startActivity(userfeedback);
         }
 
-        else if (id == R.id.nav_home) {
+        else if (id == R.id.nav_profile) {
 
-            Intent home = new Intent(Howtouse.this,WebviewActivity.class);
+            Intent home = new Intent(Howtouse.this,Profile.class);
             startActivity(home);
 
         } else if (id == R.id.nav_logout) {

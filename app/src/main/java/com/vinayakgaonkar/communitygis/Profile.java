@@ -5,23 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -46,13 +47,12 @@ public class Profile extends AppCompatActivity
     private static final String URL_Profile = "https://pratiksrane27.000webhostapp.com/Android_Data/profileInsert.php";
     EditText etname,etphno,etaadhar,etemail;
     RadioGroup radioGroup;
-    RadioButton  gender,male,female,trans ;
+    RadioButton gender,male,female,trans ;
     Button Save;
     ImageView displaypic;
     Boolean sharedprefboolean= false;
 
     private String Gender_str;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class Profile extends AppCompatActivity
         setContentView(R.layout.activity_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -112,7 +113,20 @@ public class Profile extends AppCompatActivity
             }
         });
 
+
+
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }//oncreate
+
 
     public void rbclick(View view){
         int selectedId=radioGroup.getCheckedRadioButtonId();
@@ -149,9 +163,6 @@ public class Profile extends AppCompatActivity
             }
         }
     }
-
-
-
     private void insertdata(){
 
         final String gender_str,aadhar,phno;
@@ -222,6 +233,7 @@ public class Profile extends AppCompatActivity
         }
     }
 
+    
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -230,32 +242,32 @@ public class Profile extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_feedback) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-            Intent feedback = new Intent(Profile.this,Userform.class);
-            startActivity(feedback);
-
-        } else if (id == R.id.nav_home) {
             Intent home = new Intent(Profile.this,WebviewActivity.class);
             startActivity(home);
+
+        } else if (id == R.id.nav_feedback) {
+            Intent feedback = new Intent(Profile.this,Userform.class);
+            startActivity(feedback);
             finish();
 
-        }else if (id ==R.id.nav_userfeedback){
-            Intent userfeedback = new Intent(Profile.this,UserFeedback.class);
-            startActivity(userfeedback);
+        } else if (id == R.id.nav_userfeedback) {
+            Intent your = new Intent(Profile.this,UserFeedback.class);
+            startActivity(your);
             finish();
-        }
 
-        else if (id == R.id.nav_use) {
+        } else if (id == R.id.nav_use) {
             Intent use = new Intent(Profile.this,Howtouse.class);
             startActivity(use);
             finish();
 
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
-            Intent main = new Intent(Profile.this,GoogleSignIn.class);
-            startActivity(main);
+            Intent logout = new Intent(Profile.this,GoogleSignIn.class);
+            startActivity(logout);
             finish();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

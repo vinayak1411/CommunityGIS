@@ -160,10 +160,12 @@ public class WebviewActivity extends AppCompatActivity
         } else if (id ==R.id.nav_profile){
             Intent userfeedback = new Intent(WebviewActivity.this,Profile.class);
             startActivity(userfeedback);
+
         } else if (id == R.id.nav_use) {
 
             Intent profile = new Intent(WebviewActivity.this,Howtouse.class);
             startActivity(profile);
+
 
         }
         else if (id == R.id.nav_logout) {

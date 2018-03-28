@@ -33,10 +33,6 @@
             android:label="@string/title_activity_userform"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Profile"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Howtouse"
             android:label="@string/title_activity_howtouse"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -45,6 +41,10 @@
             android:name=".UserFeedback"
             android:label="@string/title_activity_user_feedback"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Profile"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

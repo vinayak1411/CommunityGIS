@@ -208,22 +208,22 @@ public class UserFeedback extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile) {
-            Intent profile = new Intent(UserFeedback.this,Profile.class);
-            startActivity(profile);
+        if (id == R.id.nav_home) {
+            Intent home = new Intent(UserFeedback.this,WebviewActivity.class);
+            startActivity(home);
             finish();
         } else if (id == R.id.nav_feedback) {
             Intent form = new Intent(UserFeedback.this,Userform.class);
             startActivity(form);
             finish();
 
-        } else if (id == R.id.nav_use) {
-            Intent use = new Intent(UserFeedback.this,Howtouse.class);
+        } else if (id == R.id.nav_profile) {
+            Intent use = new Intent(UserFeedback.this,Profile.class);
             startActivity(use);
             finish();
 
-        } else if (id == R.id.nav_home) {
-            Intent home = new Intent(UserFeedback.this,WebviewActivity.class);
+        } else if (id == R.id.nav_use) {
+            Intent home = new Intent(UserFeedback.this,Howtouse.class);
             startActivity(home);
             finish();
 

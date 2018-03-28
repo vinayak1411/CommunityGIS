@@ -41,8 +41,9 @@
         android:id="@+id/spinner3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/comment_value"
         android:layout_alignTop="@+id/amenity"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginEnd="11dp" />
 
     <Spinner
         android:id="@+id/spinner4"
@@ -113,16 +114,16 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/spinner3"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="Submit" />
 
     <TextView
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/amenity"
         android:layout_alignTop="@+id/spinner4"
-        android:layout_toStartOf="@+id/fetch_address"
-        android:text="Select category"
+        android:text="Select Complain Category"
         android:textStyle="bold" />
 </RelativeLayout>
