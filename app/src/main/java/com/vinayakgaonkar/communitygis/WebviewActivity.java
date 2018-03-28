@@ -182,5 +182,5 @@ public class WebviewActivity extends AppCompatActivity
         return true;
     }
 
-    
+
 }
