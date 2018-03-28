@@ -124,6 +124,6 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/amenity"
         android:layout_alignTop="@+id/spinner4"
-        android:text="Select Complain Category"
+        android:text="Select Complain\n Category"
         android:textStyle="bold" />
 </RelativeLayout>

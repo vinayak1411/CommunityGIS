@@ -104,8 +104,8 @@
         android:ems="10"
         android:hint="Enter Your Email"
         android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        tools:textColor="@android:color/background_dark" />
+        android:textColor="#000"
+         />
 
     <TextView
         android:id="@+id/textView_adhar"
