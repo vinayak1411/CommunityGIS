@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -29,6 +30,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -51,7 +53,9 @@ public class Profile extends AppCompatActivity
     Button Save;
     ImageView displaypic;
     Boolean sharedprefboolean= false;
-
+    ImageView profilepic;
+    TextView uemail;
+    TextView uname;
     private String Gender_str;
 
     @Override
@@ -83,6 +87,7 @@ public class Profile extends AppCompatActivity
         etemail.setText(user.getEmail());
         Save = (Button)findViewById(R.id.Save_btn);
         loadpref();
+
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,9 +119,6 @@ public class Profile extends AppCompatActivity
         });
 
 
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -125,8 +127,32 @@ public class Profile extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        profilepic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.nav_imageview);
+        uname = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_username);
+        uemail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_useremail);
+
+        loaduserinfo();
     }//oncreate
 
+
+
+    public void loaduserinfo(){
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null){
+            uname.setText(user.getDisplayName());
+            uemail.setText(user.getEmail());
+
+
+            Glide.with(Profile.this)
+                    .load(user.getPhotoUrl())
+                    .apply(new RequestOptions()
+                            .override(100, 100)
+                            .centerCrop())
+                    .into(profilepic);
+
+        }
+    }
 
     public void rbclick(View view){
         int selectedId=radioGroup.getCheckedRadioButtonId();
@@ -233,7 +259,7 @@ public class Profile extends AppCompatActivity
         }
     }
 
-    
+
 
 
     @SuppressWarnings("StatementWithEmptyBody")

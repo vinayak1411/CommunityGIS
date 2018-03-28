@@ -11,11 +11,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Howtouse extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    FirebaseAuth mAuth;
+    ImageView profilepic;
+    TextView uemail;
+    TextView uname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +34,7 @@ public class Howtouse extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         setTitle("How To Use");
+        mAuth = FirebaseAuth.getInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -34,6 +44,31 @@ public class Howtouse extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        profilepic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.nav_imageview);
+        uname = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_username);
+        uemail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_useremail);
+
+        loaduserinfo();
+
+
+    }//oncreate
+
+    public void loaduserinfo(){
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null){
+            uname.setText(user.getDisplayName());
+            uemail.setText(user.getEmail());
+
+
+            Glide.with(Howtouse.this)
+                    .load(user.getPhotoUrl())
+                    .apply(new RequestOptions()
+                            .override(100, 100)
+                            .centerCrop())
+                    .into(profilepic);
+
+        }
     }
 
     @Override

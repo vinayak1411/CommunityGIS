@@ -79,6 +79,9 @@ public class Userform extends AppCompatActivity
     GPSTracker gps;
     List<Address> addressList;
     FirebaseAuth mAuth;
+    ImageView profilepic;
+    TextView uemail;
+    TextView uname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,8 +169,6 @@ public class Userform extends AppCompatActivity
             drawer.addDrawerListener(toggle);
             toggle.syncState();
 
-            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-            navigationView.setNavigationItemSelectedListener(this);
             //nagivartion code ends
 
             //location
@@ -244,8 +245,33 @@ public class Userform extends AppCompatActivity
         catch (NullPointerException npe){
             Toast.makeText(getApplicationContext(),"null pointer exception occured",Toast.LENGTH_SHORT).show();
         }
-    }//oncreate
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        profilepic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.nav_profilepic);
+        uname = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_username);
+        uemail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_useremail);
+
+        loaduserinfo();
+    }//oncreate
+    public void loaduserinfo(){
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null){
+            uname.setText(user.getDisplayName());
+            uemail.setText(user.getEmail());
+
+
+            Glide.with(Userform.this)
+                    .load(user.getPhotoUrl())
+                    .apply(new RequestOptions()
+                            .override(100, 100)
+                            .centerCrop())
+                    .into(profilepic);
+
+        }
+    }
 
 
     public void haveNetworkConnection() {
