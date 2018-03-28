@@ -63,6 +63,7 @@ public class UserFeedback extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_feedback);
         setTitle("Your Feedbacks");
+        mAuth = FirebaseAuth.getInstance();
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
@@ -88,7 +89,7 @@ public class UserFeedback extends AppCompatActivity
         }
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        profilepic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.nav_imageview);
+        profilepic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.nav_profilepic);
         uname = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_username);
         uemail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_useremail);
 
@@ -112,7 +113,6 @@ public class UserFeedback extends AppCompatActivity
                             .override(100, 100)
                             .centerCrop())
                     .into(profilepic);
-
         }
     }
 
