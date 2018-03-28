@@ -152,17 +152,17 @@ public class WebviewActivity extends AppCompatActivity
             Intent feedback = new Intent(WebviewActivity.this,Userform.class);
             startActivity(feedback);
 
-        } else if (id == R.id.nav_use) {
+        } else if (id == R.id.nav_userfeedback) {
 
-            Intent howtouse = new Intent(WebviewActivity.this,Howtouse.class);
+            Intent howtouse = new Intent(WebviewActivity.this,UserFeedback.class);
             startActivity(howtouse);
 
-        } else if (id ==R.id.nav_userfeedback){
-            Intent userfeedback = new Intent(WebviewActivity.this,UserFeedback.class);
+        } else if (id ==R.id.nav_profile){
+            Intent userfeedback = new Intent(WebviewActivity.this,Profile.class);
             startActivity(userfeedback);
-        } else if (id == R.id.nav_profile) {
+        } else if (id == R.id.nav_use) {
 
-            Intent profile = new Intent(WebviewActivity.this,Profile.class);
+            Intent profile = new Intent(WebviewActivity.this,Howtouse.class);
             startActivity(profile);
 
         }

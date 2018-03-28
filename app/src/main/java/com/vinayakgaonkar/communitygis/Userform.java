@@ -422,26 +422,26 @@ public class Userform extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_use) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-            Intent use = new Intent(Userform.this,Howtouse.class);
+            Intent use = new Intent(Userform.this,WebviewActivity.class);
             startActivity(use);
             finish();
 
-        } else if (id == R.id.nav_profile) {
-            Intent profile = new Intent(Userform.this,Profile.class);
+        } else if (id == R.id.nav_userfeedback) {
+            Intent profile = new Intent(Userform.this,UserFeedback.class);
             startActivity(profile);
             finish();
 
-        }else if (id ==R.id.nav_userfeedback){
-            Intent userfeedback = new Intent(Userform.this,UserFeedback.class);
+        }else if (id ==R.id.nav_profile){
+            Intent userfeedback = new Intent(Userform.this,Profile.class);
             startActivity(userfeedback);
             finish();
         }
 
 
-        else if (id == R.id.nav_home) {
-            Intent home = new Intent(Userform.this,WebviewActivity.class);
+        else if (id == R.id.nav_use) {
+            Intent home = new Intent(Userform.this,Howtouse.class);
             startActivity(home);
             finish();
 

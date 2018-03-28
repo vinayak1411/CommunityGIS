@@ -12,7 +12,7 @@
 
     <string-array name="amenity_type">
         <item>Road</item>
-        <item>School</item>
+        <item>School/College</item>
         <item>Hospital</item>
         <item>Public Toilets</item>
         <item>Play Ground</item>
@@ -57,4 +57,5 @@
     </string-array>
 
     <string name="title_activity_user_feedback">UserFeedback</string>
+    <string name="title_activity_view_feedback">ViewFeedback</string>
 </resources>
