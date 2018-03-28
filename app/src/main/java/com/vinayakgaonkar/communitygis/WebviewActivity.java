@@ -133,7 +133,25 @@ public class WebviewActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            AlertDialog.Builder exitbuilder = new AlertDialog.Builder(this);
+            exitbuilder.setCancelable(false);
+            exitbuilder.setMessage("Do you want to Exit?");
+            exitbuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user pressed "yes", then he is allowed to exit from application
+                    finish();
+                }
+            });
+            exitbuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //if user select "No", just cancel this dialog and continue with app
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alert = exitbuilder.create();
+            alert.show();
         }
     }
 
@@ -152,6 +170,7 @@ public class WebviewActivity extends AppCompatActivity
             Intent feedback = new Intent(WebviewActivity.this,Userform.class);
             startActivity(feedback);
 
+
         } else if (id == R.id.nav_userfeedback) {
 
             Intent howtouse = new Intent(WebviewActivity.this,UserFeedback.class);
@@ -160,6 +179,7 @@ public class WebviewActivity extends AppCompatActivity
         } else if (id ==R.id.nav_profile){
             Intent userfeedback = new Intent(WebviewActivity.this,Profile.class);
             startActivity(userfeedback);
+
 
         } else if (id == R.id.nav_use) {
 
