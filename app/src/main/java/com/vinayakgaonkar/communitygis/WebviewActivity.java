@@ -172,7 +172,7 @@ public class WebviewActivity extends AppCompatActivity
             FirebaseAuth.getInstance().signOut();
             Intent main = new Intent(WebviewActivity.this,GoogleSignIn.class);
             startActivity(main);
-
+            finish();
 
 
         }

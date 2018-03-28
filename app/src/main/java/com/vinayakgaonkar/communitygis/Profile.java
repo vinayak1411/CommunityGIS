@@ -272,6 +272,7 @@ public class Profile extends AppCompatActivity
             // Handle the camera action
             Intent home = new Intent(Profile.this,WebviewActivity.class);
             startActivity(home);
+            finish();
 
         } else if (id == R.id.nav_feedback) {
             Intent feedback = new Intent(Profile.this,Userform.class);

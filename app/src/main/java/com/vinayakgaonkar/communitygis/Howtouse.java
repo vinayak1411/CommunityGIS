@@ -91,8 +91,8 @@ public class Howtouse extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-            Intent profile = new Intent(Howtouse.this,WebviewActivity.class);
-            startActivity(profile);
+            Intent home = new Intent(Howtouse.this,WebviewActivity.class);
+            startActivity(home);
             finish();
         } else if (id == R.id.nav_feedback) {
 
@@ -103,17 +103,20 @@ public class Howtouse extends AppCompatActivity
         } else if (id ==R.id.nav_userfeedback){
             Intent userfeedback = new Intent(Howtouse.this,UserFeedback.class);
             startActivity(userfeedback);
+            finish();
         }
 
         else if (id == R.id.nav_profile) {
 
-            Intent home = new Intent(Howtouse.this,Profile.class);
-            startActivity(home);
+            Intent profile = new Intent(Howtouse.this,Profile.class);
+            startActivity(profile);
+            finish();
 
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
             Intent main = new Intent(Howtouse.this,GoogleSignIn.class);
             startActivity(main);
+            finish();
 
         }
 
