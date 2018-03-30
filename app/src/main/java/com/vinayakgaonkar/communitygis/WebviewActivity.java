@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,6 +53,13 @@ public class WebviewActivity extends AppCompatActivity
         webSettings.setJavaScriptEnabled(true);
         String  url = "http://try.cartoview.net/apps/cartoview_feature_list/491/view/";
         webView.loadUrl(url);
+        /*newly added code can be removed*/
+        webView.setWebViewClient(new WebViewClient() {
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                webView.loadUrl("http://try.cartoview.net/apps/cartoview_feature_list/491/view/");
+
+            }
+        });
 
 
 
@@ -166,7 +174,7 @@ public class WebviewActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_feedback) {
-          
+
             Intent feedback = new Intent(WebviewActivity.this,Userform.class);
             startActivity(feedback);
 

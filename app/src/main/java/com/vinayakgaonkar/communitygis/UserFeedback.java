@@ -74,8 +74,7 @@ public class UserFeedback extends AppCompatActivity
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             loadFeedback();
-            progressDialog.setMessage("Loading Your Feebacks Please wait...");
-            progressDialog.show();
+
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -118,6 +117,8 @@ public class UserFeedback extends AppCompatActivity
 
 
     private void loadFeedback(){
+        progressDialog.setMessage("Loading Your Feebacks Please wait...");
+        progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
