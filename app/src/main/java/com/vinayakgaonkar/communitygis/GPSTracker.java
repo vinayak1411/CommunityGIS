@@ -19,11 +19,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
-import android.widget.Toast;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 public class GPSTracker extends Service implements LocationListener {
 

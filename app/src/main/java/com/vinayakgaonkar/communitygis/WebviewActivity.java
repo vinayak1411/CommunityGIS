@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -37,6 +39,7 @@ public class WebviewActivity extends AppCompatActivity
     TextView uemail;
     TextView uname;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,7 @@ public class WebviewActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         setTitle("Map");
         mAuth = FirebaseAuth.getInstance();
-
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         //webview
         webView = (WebView) findViewById(R.id.webView);
@@ -56,14 +59,14 @@ public class WebviewActivity extends AppCompatActivity
         /*newly added code can be removed*/
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                webView.loadUrl("http://try.cartoview.net/apps/cartoview_feature_list/491/view/");
-
+                webView.loadUrl(failingUrl);
             }
         });
 
 
 
         haveNetworkConnection();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -76,11 +79,20 @@ public class WebviewActivity extends AppCompatActivity
         profilepic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.nav_imageview);
         uname = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_username);
         uemail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_useremail);
-
         loaduserinfo();
 
 
+
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+
+        }else{
+            showGPSDisabledAlertToUser();
+        }
     }//oncreate
+
+
+
+
     public void haveNetworkConnection() {
         boolean haveConnectedWifi = false;
         boolean haveConnectedMobile = false;
@@ -164,6 +176,28 @@ public class WebviewActivity extends AppCompatActivity
     }
 
 
+
+    private void showGPSDisabledAlertToUser(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("GPS is disabled in your device. Would you like to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Goto Settings",
+                        new DialogInterface.OnClickListener(){
+                            public void onClick(DialogInterface dialog, int id){
+                                Intent callGPSSettingIntent = new Intent(
+                                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                startActivity(callGPSSettingIntent);
+                            }
+                        });
+        alertDialogBuilder.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
 
 
 
