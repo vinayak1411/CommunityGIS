@@ -167,6 +167,7 @@ public class UserFeedback extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
                         Toast.makeText(UserFeedback.this,error.getMessage(),Toast.LENGTH_LONG).show();
                     }})
         {
