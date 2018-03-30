@@ -43,10 +43,10 @@ public class GPSTracker extends Service implements LocationListener {
     double longitude; // longitude
 
     // The minimum distance to change Updates in meters
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 5;
 
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 ;
+    private static final long MIN_TIME_BW_UPDATES = 1000 *2 * 1;
 
     // Declaring a Location Manager
     protected LocationManager locationManager;
@@ -111,10 +111,6 @@ public class GPSTracker extends Service implements LocationListener {
                     }
                 }
             }
-
-        } catch (NullPointerException npe){
-
-            npe.printStackTrace();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -181,6 +177,7 @@ public class GPSTracker extends Service implements LocationListener {
 
         // Showing Alert Message
         alertDialog.show();
+
     }
 
     @Override

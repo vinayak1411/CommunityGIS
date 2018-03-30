@@ -84,7 +84,7 @@ public class Userform extends AppCompatActivity
     TextView uname;
     Boolean cameraclick = false;
     Boolean getlocclick = false;
-    Boolean comment_check = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,9 +112,7 @@ public class Userform extends AppCompatActivity
         if(TextUtils.isEmpty(comment.getText())){
             comment.setError("Field Required");
         }
-        else{
-            comment_check = true;
-        }
+
         imageView = (ImageView) findViewById(R.id.imageview);
         amenity_category_spinner = (Spinner) findViewById(R.id.spinner4);
         amenity_type_spinner = (Spinner) findViewById(R.id.spinner3);
@@ -248,7 +246,7 @@ public class Userform extends AppCompatActivity
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(cameraclick == true && getlocclick == true && comment_check == true) {
+                    if(cameraclick == true && getlocclick == true ) {
                         inserData();
                     }
                     else {
@@ -257,7 +255,7 @@ public class Userform extends AppCompatActivity
                         getloc.setText("click me!");
                         clk_photo.requestFocus();
                         clk_photo.setText("click me!");
-                        comment.setText("Add Your Comment");
+
                     }
                 }
             });
