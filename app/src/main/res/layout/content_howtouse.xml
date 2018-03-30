@@ -8,4 +8,289 @@
     tools:context="com.vinayakgaonkar.communitygis.Howtouse"
     tools:showIn="@layout/app_bar_howtouse">
 
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/sign"
+                android:text="Step1 : Sign In Using your Google Account"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:id="@+id/signpic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/signin"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/map"
+                android:text="Step2 : You will see the Map , to give feedback on Amenity click on above top left cornor button  "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/mapb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/map"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/navi"
+                android:text="Step3 : Click on Give Feedback "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/givefeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/feedback"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/address"
+                android:text="Step4 : Click on Fetch Address Button "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:id="@+id/fetchadd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/address"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/ammenity"
+                android:text="Step5 : Select ammenity  "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/selectamenity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/amenity"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/complain"
+                android:text="Step6 : Select Complain Category  "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:id="@+id/selectcomplain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/complain"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/img"
+                android:text="Step7: Press Click Photo to capture image  "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:id="@+id/userimg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+
+            <TextView
+                android:id="@+id/comment"
+                android:text="Step8: Comment on amenity condition  "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:id="@+id/usercomment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/comment"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+
+            <TextView
+                android:id="@+id/rating1"
+                android:text="Step9: Give Ratings (min is 0.5 and max is 5) "
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+
+            <ImageView
+                android:id="@+id/userrating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ratings"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/submit"
+                android:text="Step10: Click on Submit Button to submit your feedback"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/usersubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/submit"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+
+            <TextView
+                android:id="@+id/urfeedback"
+                android:text="Step11: Click on Your Feedback to see all your previous feedback"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/yourfeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/urfeedback"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/displayfeed"
+                android:text="Step12: You can see all your feedbacks here"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/displaymyfeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/myfeedback"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+
+            <TextView
+                android:id="@+id/pro"
+                android:text="Step13: Click on Profile to See your Profile"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/proclick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profile"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+
+            <TextView
+                android:id="@+id/mpro"
+                android:text="Step14: Fill all your details and press save"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/myprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/myprofile"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/logout"
+                android:text="Step15: Click on SignOut to logout from app"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
+
+            <ImageView
+                android:id="@+id/mylogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logout"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_margin="10dp"/>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
