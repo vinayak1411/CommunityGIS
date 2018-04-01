@@ -104,7 +104,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/submit"
-        android:layout_alignStart="@+id/comment_value" />
+        android:layout_alignStart="@+id/comment_value"
+        android:layout_marginEnd="10dp" />
 
     <TextView
         android:id="@+id/rating_value"
