@@ -214,8 +214,8 @@ public class Userform extends AppCompatActivity
                             if (geocoder.isPresent()) {
                                 try {
                                     addressList = geocoder.getFromLocation(latitude, longitude, 1);
-                                } catch (NullPointerException npe) {
-                                    npe.printStackTrace();
+                                } catch (Exception npe) {
+                                    Toast.makeText(getApplicationContext(), npe.getMessage(),Toast.LENGTH_LONG).show();
                                 }
                                 if (addressList != null) {
                                     String geocodeaddress = addressList.get(0).getAddressLine(0);
@@ -224,13 +224,9 @@ public class Userform extends AppCompatActivity
                                     address.setText("latitude:" + latitude + ",longitude:" + longitude);
                                 }
                             }
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), "geocoder IO exception ,Internet Connection Required ", Toast.LENGTH_LONG).show();
-                        } catch (NullPointerException npegc) {
-                            Toast.makeText(getApplicationContext(), "gecoder null pointer exception ", Toast.LENGTH_LONG).show();
-
                         }
-
 
                         Toast.makeText(getApplicationContext(), "Your Location is - \nLat: "
                                 + latitude + "\nLong: " + longitude, Toast.LENGTH_SHORT).show();
