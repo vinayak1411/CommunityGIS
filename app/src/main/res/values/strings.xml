@@ -22,16 +22,24 @@
     <string-array name="Category_Road">
         <item>Traffic Congestion</item>
         <item>Water Logging</item>
-        <item>Garbage</item>
+        <item>Illegal Parking</item>
+        <item>Illegal Hawkers</item>
+        <item>Garbage All Around</item>
         <item>Potholes</item>
+        <item>No Street Lights</item>
+        <item>Double Parking</item>
     </string-array>
 
     <string-array name="Category_School">
-        <item>Improper Sanitation</item>
+        <item>Improper Sanitation Of washrooms</item>
         <item>Sound Pollution</item>
-        <item>Water Logging</item>
+        <item>Water Logging Outside Premises</item>
         <item>Improper Teaching Aids</item>
-        <item>Garbage</item>
+        <item>Shortage Of Water Supply</item>
+        <item>Garbage Not Disposed Properly</item>
+        <item>Load Shading</item>
+        <item>Pan/Gutka Seller Outside Premises</item>
+        <item>Unhygienic Canteen</item>
     </string-array>
 
     <string-array name="Category_Hospital">
@@ -39,6 +47,10 @@
         <item>Few Medical Facilites</item>
         <item>No Medical Nearby</item>
         <item>No Ambulance</item>
+        <item>No Highly Skilled Doctors</item>
+        <item>Shortage Of Water Supply</item>
+        <item>Garbage Not Disposed Properly</item>
+        <item>Load Shading</item>
     </string-array>
 
     <string-array name="Category_PublicToilets">
@@ -47,6 +59,7 @@
         <item>No Timely Cleaning</item>
         <item>No Supervisor</item>
         <item>No Latch For Doors</item>
+        <item>lights Not Working</item>
     </string-array>
 
     <string-array name="Category_PlayGround">
@@ -54,6 +67,7 @@
         <item>No Proper Maintainence</item>
         <item>Illegal Parking</item>
         <item>Presence of Garbage </item>
+        <item>Slums</item>
     </string-array>
 
     <string name="title_activity_user_feedback">UserFeedback</string>
